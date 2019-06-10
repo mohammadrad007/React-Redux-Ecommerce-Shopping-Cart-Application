@@ -11,6 +11,11 @@ export default function(state = initialState, action) {
         items: action.payload
       };
 
+    case REMOVE_FROM_CART:
+      return {
+        ...state,
+        items: action.payload
+      };
     default:
       return state;
   }

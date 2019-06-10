@@ -19,3 +19,11 @@ export const addToCart = (items, product) => dispatch => {
     payload: cartItems
   });
 };
+export const removeFromCart = (items, product) => dispatch => {
+  const cartItems = items.splice().filter(elm => elm.id !== product.id);
+  localStorage.setItem("cartItems", cartItems);
+  return dispatch({
+    type: REMOVE_FROM_CART,
+    payload: cartItems
+  });
+};

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import util from "../util";
 import { connect } from "react-redux";
 import { fetchProducts } from "../actions/productActions";
+import { addToCart } from "../actions/cartActions";
 
 class Products extends Component {
   //WARNING! To be deprecated in React v17. Use componentDidMount instead.
@@ -23,7 +24,7 @@ class Products extends Component {
             <b>{util.formatCurency(product.price)} </b>
             <button
               className="btn btn-success"
-              onClick={e => this.props.handleAddToCart(e, product)}
+              onClick={e => this.props.addToCart(this.props.cartItems, product)}
             >
               Add To Cart
             </button>
@@ -38,10 +39,11 @@ class Products extends Component {
 const mapStateToProps = state => {
   // console.log(state.products.filtredItems);
   return {
-    products: state.products.filtredItems
+    products: state.products.filtredItems,
+    cartItems: state.cart.items
   };
 };
 export default connect(
   mapStateToProps,
-  { fetchProducts }
+  { fetchProducts, addToCart }
 )(Products);

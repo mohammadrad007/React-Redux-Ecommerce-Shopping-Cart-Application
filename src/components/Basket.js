@@ -30,6 +30,13 @@ export default class Basket extends Component {
             {util.formatCurency(
               cartItems.reduce((a, c) => a + c.price * c.count, 0)
             )}
+            <br />
+            <button
+              className="btn btn-primary"
+              onClick={() => alert("Checkout need to implement...")}
+            >
+              CheckOut
+            </button>
           </div>
         )}
       </div>

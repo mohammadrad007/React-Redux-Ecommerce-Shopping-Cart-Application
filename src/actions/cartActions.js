@@ -13,17 +13,17 @@ export const addToCart = (items, product) => dispatch => {
   if (!productAlredyInCart) {
     cartItems.push({ ...product, count: 1 });
   }
-  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  // localStorage.setItem("cartItems", JSON.stringify(cartItems));
   return dispatch({
     type: ADD_TO_CART,
     payload: cartItems
   });
 };
 export const removeFromCart = (items, product) => dispatch => {
-  const cartItems = items.slice().filter(elm => elm.id !== product.id);
-  localStorage.setItem("cartItems", cartItems);
+  const cartItem = items.slice().filter(elm => elm.id !== product.id);
+  // localStorage.setItem("cartItems", cartItems);
   return dispatch({
     type: REMOVE_FROM_CART,
-    payload: { cartItems }
+    payload: cartItem
   });
 };

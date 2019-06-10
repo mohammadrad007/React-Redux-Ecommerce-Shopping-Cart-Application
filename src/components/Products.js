@@ -11,7 +11,7 @@ class Products extends Component {
   }
 
   render() {
-    console.log(this.props.products);
+    console.log(this.props.cartItems);
 
     const productItems = this.props.products.map(product => (
       <div className="col-md-4" key={product.id}>

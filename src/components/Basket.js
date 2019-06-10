@@ -5,6 +5,7 @@ import { removeFromCart } from "../actions/cartActions";
 
 class Basket extends Component {
   render() {
+    console.log(this.props.cartItems);
     const { cartItems } = this.props;
     return (
       <div className="alert alert-info">
@@ -21,7 +22,7 @@ class Basket extends Component {
                   <b>{item.title}</b>X {item.count} = {item.price * item.count}
                   <button
                     className="btn btn-danger"
-                    onClick={e =>
+                    onClick={() =>
                       this.props.removeFromCart(this.props.cartItems, item)
                     }
                   >

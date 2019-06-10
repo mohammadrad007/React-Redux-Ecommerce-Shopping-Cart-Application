@@ -5,6 +5,14 @@ import Basket from "./components/Basket";
 import { Provider } from "react-redux";
 import store from "./Store";
 class App extends Component {
+  // componentWillMount() {
+  //   if (localStorage.getItem("cartItems")) {
+  //     this.setState({
+  //       cartItems: JSON.parse(localStorage.getItem("cartItems"))
+  //     });
+  //   }
+  // }
+
   render() {
     // console.log(this.state);
     return (

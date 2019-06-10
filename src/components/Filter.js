@@ -8,7 +8,9 @@ class Filter extends Component {
     // console.log("filteredProduct", this.props.filteredProduct);
     return (
       <div className="row">
-        <div className="col-md-4">{this.props.count} product(s) found</div>
+        <div className="col-md-4">
+          {this.props.filteredProduct.length} product(s) found
+        </div>
         <div className="col-md-4">
           order by
           <label>

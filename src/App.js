@@ -112,10 +112,7 @@ class App extends Component {
                 count={this.state.filteredProducts.length}
               />
               <hr />
-              <Products
-                products={this.state.filteredProducts}
-                handleAddToCart={this.handleAddToCart}
-              />
+              <Products handleAddToCart={this.handleAddToCart} />
             </div>
             <div className="col-md-4">
               <Basket

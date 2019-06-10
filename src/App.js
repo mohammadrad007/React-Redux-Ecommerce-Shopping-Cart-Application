@@ -20,6 +20,11 @@ class App extends Component {
           filteredProducts: data
         })
       );
+    if (localStorage.getItem("cartItems")) {
+      this.setState({
+        cartItems: JSON.parse(localStorage.getItem("cartItems"))
+      });
+    }
   }
   handleAddToCart = (e, product) => {
     this.setState(state => {
@@ -38,6 +43,14 @@ class App extends Component {
       return cartItems;
     });
   };
+  handleRemoveFromCart = (e, item) => {
+    this.setState(state => {
+      const cartItems = state.cartItems.filter(elm => elm.id !== item.id);
+      localStorage.setItem("cartItems", cartItems);
+      return { cartItems };
+    });
+  };
+
   handleChangeSort = e => {
     this.setState({
       sort: e.target.value

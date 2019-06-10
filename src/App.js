@@ -3,7 +3,7 @@ import Products from "./components/Products";
 import Filter from "./components/Filter";
 import Basket from "./components/Basket";
 import { Provider } from "react-redux";
-
+import store from "./Store";
 class App extends Component {
   constructor(props) {
     super(props);

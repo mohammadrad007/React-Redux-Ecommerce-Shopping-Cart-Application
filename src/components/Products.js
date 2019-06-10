@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 import util from "../util";
+import { connect } from "react-redux";
+import { fetchProducts } from "../actions/productActions";
+
 class Products extends Component {
+  //WARNING! To be deprecated in React v17. Use componentDidMount instead.
+  componentWillMount() {
+    console.log(this.props);
+    this.props.fetchProducts();
+  }
+
   render() {
     const productItems = this.props.products.map(product => (
       <div className="col-md-4" key={product.id}>
@@ -24,4 +33,14 @@ class Products extends Component {
     return <div className="row">{productItems}</div>;
   }
 }
-export default Products;
+
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    products: state.products.items
+  };
+};
+export default connect(
+  mapStateToProps,
+  { fetchProducts }
+)(Products);

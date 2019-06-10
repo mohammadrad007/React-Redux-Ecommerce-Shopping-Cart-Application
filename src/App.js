@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import Products from "./components/Products";
 import Filter from "./components/Filter";
+import Basket from "./components/Basket";
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       products: [],
-      filteredProducts: []
+      filteredProducts: [],
+      cartItems: []
     };
   }
   componentWillMount() {
@@ -19,7 +21,23 @@ class App extends Component {
         })
       );
   }
-  handleAddToCart = () => {};
+  handleAddToCart = (e, product) => {
+    this.setState(state => {
+      const cartItems = state.cartItems;
+      let productAlredyInCart = false;
+      cartItems.forEach(item => {
+        if (item.id === product.id) {
+          productAlredyInCart = true;
+          item.count++;
+        }
+      });
+      if (!productAlredyInCart) {
+        cartItems.push({ ...product, count: 1 });
+      }
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      return cartItems;
+    });
+  };
   handleChangeSort = e => {
     this.setState({
       sort: e.target.value
@@ -83,7 +101,12 @@ class App extends Component {
               handleAddToCart={this.handleAddToCart}
             />
           </div>
-          <div className="col-md-4" />
+          <div className="col-md-4">
+            <Basket
+              cartItems={this.state.cartItems}
+              handleRemoveFromCart={this.handleRemoveFromCart}
+            />
+          </div>
         </div>
       </div>
     );

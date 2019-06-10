@@ -5,12 +5,13 @@ import { fetchProducts } from "../actions/productActions";
 
 class Products extends Component {
   //WARNING! To be deprecated in React v17. Use componentDidMount instead.
-  componentWillMount() {
-    console.log(this.props);
+  componentDidMount() {
     this.props.fetchProducts();
   }
 
   render() {
+    console.log(this.props.products);
+
     const productItems = this.props.products.map(product => (
       <div className="col-md-4" key={product.id}>
         <div className="thumbnail text-center">
@@ -35,9 +36,9 @@ class Products extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state.products.filtredItems);
   return {
-    products: state.products.items
+    products: state.products.filtredItems
   };
 };
 export default connect(

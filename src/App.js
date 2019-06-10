@@ -8,26 +8,26 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [],
-      filteredProducts: [],
+      // products: [],
+      // filteredProducts: [],
       cartItems: []
     };
   }
-  componentWillMount() {
-    fetch(`http://localhost:8000/products`)
-      .then(res => res.json())
-      .then(data =>
-        this.setState({
-          products: data,
-          filteredProducts: data
-        })
-      );
-    if (localStorage.getItem("cartItems")) {
-      this.setState({
-        cartItems: JSON.parse(localStorage.getItem("cartItems"))
-      });
-    }
-  }
+  // componentWillMount() {
+  //   fetch(`http://localhost:8000/products`)
+  //     .then(res => res.json())
+  //     .then(data =>
+  //       this.setState({
+  //         products: data,
+  //         filteredProducts: data
+  //       })
+  //     );
+  //   if (localStorage.getItem("cartItems")) {
+  //     this.setState({
+  //       cartItems: JSON.parse(localStorage.getItem("cartItems"))
+  //     });
+  //   }
+  // }
   handleAddToCart = (e, product) => {
     this.setState(state => {
       const cartItems = state.cartItems;
@@ -105,11 +105,11 @@ class App extends Component {
           <div className="row">
             <div className="col-md-8">
               <Filter
-                size={this.state.size}
-                sort={this.state.sort}
-                handleChangeSize={this.handleChangeSize}
-                handleChangeSort={this.handleChangeSort}
-                count={this.state.filteredProducts.length}
+              // size={this.state.size}
+              // sort={this.state.sort}
+              // handleChangeSize={this.handleChangeSize}
+              // handleChangeSort={this.handleChangeSort}
+              // count={this.state.filteredProducts.length}
               />
               <hr />
               <Products handleAddToCart={this.handleAddToCart} />

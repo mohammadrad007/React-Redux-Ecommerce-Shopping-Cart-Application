@@ -8,12 +8,12 @@ class Filter extends Component {
     // console.log("filteredProduct", this.props.filteredProduct);
     return (
       <div className="row">
-        <div className="col-md-4">
+        <div className="col-md-6 product-alert">
           {this.props.filteredProduct.length} product(s) found
         </div>
-        <div className="col-md-4">
-          order by
-          <label>
+        <div className="col-md-6">
+          <label className="product-alert">
+            order by
             <select
               value={this.props.sort}
               className="form-control"
@@ -31,8 +31,8 @@ class Filter extends Component {
           </label>
         </div>
         <div className="col-md-4">
-          filter size
-          <label>
+          <label className="product-alert">
+            filter size
             <select
               value={this.props.size}
               className="form-control"

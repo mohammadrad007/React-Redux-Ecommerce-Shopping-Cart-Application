@@ -14,16 +14,20 @@ class Products extends Component {
     console.log(this.props.cartItems);
 
     const productItems = this.props.products.map(product => (
-      <div className="col-md-4" key={product.id}>
+      <div className="col-md-4 col-sm-6" key={product.id}>
         <div className="thumbnail text-center">
           <a href={`#${product.id}`} onClick={this.props.handleAddToCart}>
             <img src={`/products/${product.sku}_2.jpg`} alt={product.title} />
-            <p>{product.title}</p>
+            <p>
+              {product.title.length < 22
+                ? product.title
+                : `${product.title.slice(0, 22)} ...`}
+            </p>
           </a>
           <div>
             <b>{util.formatCurency(product.price)} </b>
             <button
-              className="btn btn-success"
+              className="btn addToCart"
               onClick={() =>
                 this.props.addToCart(this.props.cartItems, product)
               }

@@ -8,15 +8,17 @@ class Basket extends Component {
     console.log(this.props.cartItems);
     const { cartItems } = this.props;
     return (
-      <div className="alert alert-info">
+      <div className="alert alert-info basket">
         {cartItems.length === 0 ? (
-          "Basket is Empty"
+          <p>Basket is Empty!!</p>
         ) : (
-          <div>You have {cartItems.length} in the Basket</div>
+          <div className="basket-alert">
+            You have <span>{cartItems.length}</span> in the Basket
+          </div>
         )}
         {cartItems.length > 0 && (
           <div>
-            <ul>
+            <ul className="basket-list">
               {cartItems.map(item => (
                 <li key={item.id}>
                   <b>{item.title}</b>X {item.count} = {item.price * item.count}
@@ -28,10 +30,11 @@ class Basket extends Component {
                   >
                     X
                   </button>
+                  <hr />
                 </li>
               ))}
             </ul>
-            Total :{" "}
+            Total :{"   "}
             {util.formatCurency(
               cartItems.reduce((a, c) => a + c.price * c.count, 0)
             )}

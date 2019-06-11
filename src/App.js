@@ -18,7 +18,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="container">
-          <h1>Ecommerce Shoppin Cart Application</h1>
+          <h1>Ecommerce Shopping Cart Application</h1>
           <hr />
           <div className="row">
             <div className="col-md-9 col-sm-8">

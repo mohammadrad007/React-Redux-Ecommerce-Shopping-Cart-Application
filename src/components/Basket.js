@@ -13,7 +13,7 @@ class Basket extends Component {
           <p>Basket is Empty!!</p>
         ) : (
           <div className="basket-alert">
-            You have <span>{cartItems.length}</span> in the Basket
+            You have <span>{cartItems.length}</span> Product(s) in the Basket
           </div>
         )}
         {cartItems.length > 0 && (
@@ -21,9 +21,9 @@ class Basket extends Component {
             <ul className="basket-list">
               {cartItems.map(item => (
                 <li key={item.id}>
-                  <b>{item.title}</b>X {item.count} = {item.price * item.count}
+                  <b>{item.title}</b>* {item.count} = {item.price * item.count}
                   <button
-                    className="btn btn-danger"
+                    className="btn btn-basket"
                     onClick={() =>
                       this.props.removeFromCart(this.props.cartItems, item)
                     }
@@ -34,7 +34,7 @@ class Basket extends Component {
                 </li>
               ))}
             </ul>
-            Total :{"   "}
+            <span>Total: </span>
             {util.formatCurency(
               cartItems.reduce((a, c) => a + c.price * c.count, 0)
             )}

@@ -29,8 +29,11 @@ hr {
 }
 
 .basket {
-    border-radius: 5px;
-    box-shadow: 4px 3px 14px 1px #b1acac82
+    width: 100%;
+    background-color: #5e82a369;
+    border-radius: 2px;
+    box-shadow: 4px 3px 14px 1px #b1acac82;
+    margin: 50px 10px 20px;
 }
 
 .basket p {
@@ -96,4 +99,33 @@ hr {
     color: #173242d5;
     font-style: bold;
     font-size: 1.5rem
+}
+
+.basket-list b {
+    margin: 0px 7px !important;
+}
+
+.btn-basket {
+    margin: 10px;
+    background-color: #c53535f5;
+    border-radius: 50%;
+    text-align: center;
+    padding: 3px;
+    width: 30px;
+    height: 30px;
+}
+
+.btn-basket:focus {
+    outline: none;
+}
+
+.form-control {
+    width: 75%;
+    padding: 5%;
+    border: 1px solid #e9aaaa82;
+    background: #173242d5;
+    color: wheat;
+    border-radius: 12px;
+    margin: 5px 10px;
+    cursor: pointer;
 }

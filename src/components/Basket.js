@@ -1,32 +1,40 @@
 import React, { Component } from "react";
 import util from "../util";
+import { connect } from "react-redux";
+import { removeFromCart } from "../actions/cartActions";
 
-export default class Basket extends Component {
+class Basket extends Component {
   render() {
-    const { cartItems, handleRemoveFromCart } = this.props;
+    console.log(this.props.cartItems);
+    const { cartItems } = this.props;
     return (
-      <div className="alert alert-info">
+      <div className="alert alert-info basket">
         {cartItems.length === 0 ? (
-          "Basket is Empty"
+          <p>Basket is Empty!!</p>
         ) : (
-          <div>You have {cartItems.length} in the Basket</div>
+          <div className="basket-alert">
+            You have <span>{cartItems.length}</span> in the Basket
+          </div>
         )}
         {cartItems.length > 0 && (
           <div>
-            <ul>
+            <ul className="basket-list">
               {cartItems.map(item => (
                 <li key={item.id}>
                   <b>{item.title}</b>X {item.count} = {item.price * item.count}
                   <button
                     className="btn btn-danger"
-                    onClick={e => handleRemoveFromCart(e, item)}
+                    onClick={() =>
+                      this.props.removeFromCart(this.props.cartItems, item)
+                    }
                   >
                     X
                   </button>
+                  <hr />
                 </li>
               ))}
             </ul>
-            Total :{" "}
+            Total :{"   "}
             {util.formatCurency(
               cartItems.reduce((a, c) => a + c.price * c.count, 0)
             )}
@@ -43,3 +51,9 @@ export default class Basket extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({ cartItems: state.cart.items });
+export default connect(
+  mapStateToProps,
+  { removeFromCart }
+)(Basket);
